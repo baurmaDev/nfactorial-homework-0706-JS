@@ -1,7 +1,9 @@
 const fs = require('fs');
 const addMoney = (amount) => {
-        
-    let balance = 0;
+    let d = fs.readFileSync('./config.json'),
+    balance;
+    balance = JSON.parse(d);
+    
     balance += Number(amount);
     let data = JSON.stringify(balance);
     fs.writeFile('./config.json', data, function (err) {
